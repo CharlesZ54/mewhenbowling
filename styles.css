@@ -339,6 +339,10 @@ body {
     width: 20px;
 }
 
+.subscribe-steps span {
+    text-align: left;
+}
+
 .ical-input-group {
     display: flex;
     gap: 0.5rem;
@@ -485,8 +489,33 @@ body {
     border-radius: 8px;
     margin-top: 1rem;
     display: none;
+    position: relative;
 }
 
 .success-message.show {
     display: block;
+}
+
+/* Dismiss button */
+.dismiss-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #155724;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.dismiss-btn:hover {
+    background-color: rgba(21, 87, 36, 0.1);
 } 

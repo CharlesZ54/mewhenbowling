@@ -44,7 +44,7 @@ async function loadEventsFromYaml() {
                 {
                     id: 1,
                     title: "Lorem Ipsum Event",
-                    date: "2024-12-15",
+                    date: "2025-12-15",
                     start_time: "7:00 PM",
                     end_time: "9:00 PM",
                     location: "Lorem Ipsum Location"
@@ -52,7 +52,7 @@ async function loadEventsFromYaml() {
                 {
                     id: 2,
                     title: "Another Lorem Event",
-                    date: "2024-12-22",
+                    date: "2025-12-22",
                     start_time: "7:00 PM",
                     end_time: "9:00 PM",
                     location: "Lorem Ipsum Venue"
@@ -60,7 +60,7 @@ async function loadEventsFromYaml() {
                 {
                     id: 3,
                     title: "Lorem Ipsum Party",
-                    date: "2024-12-25",
+                    date: "2025-12-25",
                     start_time: "6:00 PM",
                     end_time: "8:00 PM",
                     location: "Lorem Ipsum Hall"
@@ -68,7 +68,7 @@ async function loadEventsFromYaml() {
                 {
                     id: 4,
                     title: "Lorem Ipsum Workshop",
-                    date: "2024-12-29",
+                    date: "2025-12-29",
                     start_time: "7:00 PM",
                     end_time: "9:00 PM",
                     location: "Lorem Ipsum Center"
@@ -286,7 +286,15 @@ function showSuccessMessage(message) {
     // Create new success message
     const successMessage = document.createElement('div');
     successMessage.className = 'success-message show';
-    successMessage.textContent = message;
+    
+    // Handle multi-line messages with HTML formatting
+    if (message.includes('\n')) {
+        // Add dismiss button for multi-line messages
+        const dismissButton = '<button class="dismiss-btn" onclick="this.parentElement.remove()">&times;</button>';
+        successMessage.innerHTML = dismissButton + message.replace(/\n/g, '<br>');
+    } else {
+        successMessage.textContent = message;
+    }
     
     // Insert after the copy button
     const copyButton = document.querySelector('.btn-copy');
@@ -294,11 +302,13 @@ function showSuccessMessage(message) {
         copyButton.parentNode.insertAdjacentElement('afterend', successMessage);
     }
     
-    // Auto-hide after 3 seconds
-    setTimeout(() => {
-        successMessage.classList.remove('show');
-        setTimeout(() => successMessage.remove(), 300);
-    }, 3000);
+    // Auto-hide after 3 seconds for short messages only
+    if (!message.includes('\n')) {
+        setTimeout(() => {
+            successMessage.classList.remove('show');
+            setTimeout(() => successMessage.remove(), 300);
+        }, 3000);
+    }
 }
 
 // Update iCal URL based on current domain
@@ -312,22 +322,20 @@ function updateIcalUrl() {
 
 // Calendar app integration functions
 function openGoogleCalendar() {
-    const icalUrl = icalUrlInput.value;
-    const googleCalendarUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(icalUrl)}`;
-    window.open(googleCalendarUrl, '_blank');
+    // Google Calendar doesn't support direct iCal URL import via web URL
+    // Instead, we'll copy the iCal URL and show instructions
+    copyIcalUrl();
+    showSuccessMessage('iCal URL copied! To add to Google Calendar:\n1. Go to calendar.google.com\n2. Click the + next to "Other calendars"\n3. Choose "From URL"\n4. Paste the copied URL');
 }
 
 function openAppleCalendar() {
-    // Apple Calendar doesn't have a direct web URL, so we'll just copy the iCal URL
-    copyIcalUrl();
-    showSuccessMessage('iCal URL copied! Add it to Apple Calendar manually.');
+    const icalUrl = icalUrlInput.value;
+    // Apple Calendar supports direct calendar subscription via webcal:// URL
+    const appleCalendarUrl = icalUrl.replace('https://', 'webcal://');
+    window.open(appleCalendarUrl, '_blank');
 }
 
-function openOutlook() {
-    const icalUrl = icalUrlInput.value;
-    const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=Calendar%20Subscription&body=Please%20add%20this%20calendar:%20${encodeURIComponent(icalUrl)}`;
-    window.open(outlookUrl, '_blank');
-}
+
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -358,5 +366,4 @@ function hideLoading(element) {
 // Export functions for global access
 window.copyIcalUrl = copyIcalUrl;
 window.openGoogleCalendar = openGoogleCalendar;
-window.openAppleCalendar = openAppleCalendar;
-window.openOutlook = openOutlook; 
+window.openAppleCalendar = openAppleCalendar; 
