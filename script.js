@@ -44,33 +44,33 @@ async function loadEventsFromYaml() {
                 {
                     id: 1,
                     title: "Lorem Ipsum Event",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                     date: "2024-12-15",
-                    time: "7:00 PM",
+                    start_time: "7:00 PM",
+                    end_time: "9:00 PM",
                     location: "Lorem Ipsum Location"
                 },
                 {
                     id: 2,
                     title: "Another Lorem Event",
-                    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     date: "2024-12-22",
-                    time: "7:00 PM",
+                    start_time: "7:00 PM",
+                    end_time: "9:00 PM",
                     location: "Lorem Ipsum Venue"
                 },
                 {
                     id: 3,
                     title: "Lorem Ipsum Party",
-                    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                     date: "2024-12-25",
-                    time: "6:00 PM",
+                    start_time: "6:00 PM",
+                    end_time: "8:00 PM",
                     location: "Lorem Ipsum Hall"
                 },
                 {
                     id: 4,
                     title: "Lorem Ipsum Workshop",
-                    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     date: "2024-12-29",
-                    time: "7:00 PM",
+                    start_time: "7:00 PM",
+                    end_time: "9:00 PM",
                     location: "Lorem Ipsum Center"
                 }
             ];
