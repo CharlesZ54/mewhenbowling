@@ -6,53 +6,48 @@ METHOD:PUBLISH
 X-WR-CALNAME:My Calendar
 X-WR-CALDESC:Subscribe to our events calendar
 X-WR-TIMEZONE:UTC
-
 BEGIN:VEVENT
 UID:event-1@mewhenbowling.com
-DTSTAMP:20241201T000000Z
-DTSTART:20241215T100000Z
-DTEND:20241215T110000Z
-SUMMARY:Team Meeting
-DESCRIPTION:Weekly team sync to discuss project progress and upcoming milestones.
-LOCATION:Conference Room A
+DTSTAMP:20250804T002722Z
+DTSTART:20241215T190000Z
+DTEND:20241215T200000Z
+SUMMARY:League Night - Week 100
+DESCRIPTION:Firsts week of the Me When Bowling league season. Come ready to bowl and meet your teammates!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
-
 BEGIN:VEVENT
 UID:event-2@mewhenbowling.com
-DTSTAMP:20241201T000000Z
-DTSTART:20241220T140000Z
-DTEND:20241220T160000Z
-SUMMARY:Product Launch
-DESCRIPTION:Launch of our new product line with live demonstrations and Q&A session.
-LOCATION:Main Auditorium
+DTSTAMP:20250804T002722Z
+DTSTART:20241222T190000Z
+DTEND:20241222T200000Z
+SUMMARY:League Night - Week 2
+DESCRIPTION:Second week of league play. Don't forget your bowling shoes!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
-
 BEGIN:VEVENT
 UID:event-3@mewhenbowling.com
-DTSTAMP:20241201T000000Z
+DTSTAMP:20250804T002722Z
 DTSTART:20241225T180000Z
-DTEND:20241225T220000Z
-SUMMARY:Holiday Party
-DESCRIPTION:Annual company holiday celebration with food, drinks, and entertainment.
-LOCATION:Grand Ballroom
+DTEND:20241225T190000Z
+SUMMARY:Holiday Bowling Party
+DESCRIPTION:Special holiday bowling event with prizes and refreshments. Open to all league members!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
-
 BEGIN:VEVENT
 UID:event-4@mewhenbowling.com
-DTSTAMP:20241201T000000Z
-DTSTART:20241228T090000Z
-DTEND:20241228T170000Z
-SUMMARY:Training Workshop
-DESCRIPTION:Advanced training session on new technologies and best practices.
-LOCATION:Training Center
+DTSTAMP:20250804T002722Z
+DTSTART:20241229T190000Z
+DTEND:20241229T200000Z
+SUMMARY:League Night - Week 3
+DESCRIPTION:Third week of league competition. Keep up the great bowling!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
-
-END:VCALENDAR 
+END:VCALENDAR
