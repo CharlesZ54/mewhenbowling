@@ -1,0 +1,58 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//My Calendar//Calendar Website//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:My Calendar
+X-WR-CALDESC:Subscribe to our events calendar
+X-WR-TIMEZONE:UTC
+
+BEGIN:VEVENT
+UID:event-1@mewhenbowling.com
+DTSTAMP:20241201T000000Z
+DTSTART:20241215T100000Z
+DTEND:20241215T110000Z
+SUMMARY:Team Meeting
+DESCRIPTION:Weekly team sync to discuss project progress and upcoming milestones.
+LOCATION:Conference Room A
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:event-2@mewhenbowling.com
+DTSTAMP:20241201T000000Z
+DTSTART:20241220T140000Z
+DTEND:20241220T160000Z
+SUMMARY:Product Launch
+DESCRIPTION:Launch of our new product line with live demonstrations and Q&A session.
+LOCATION:Main Auditorium
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:event-3@mewhenbowling.com
+DTSTAMP:20241201T000000Z
+DTSTART:20241225T180000Z
+DTEND:20241225T220000Z
+SUMMARY:Holiday Party
+DESCRIPTION:Annual company holiday celebration with food, drinks, and entertainment.
+LOCATION:Grand Ballroom
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:event-4@mewhenbowling.com
+DTSTAMP:20241201T000000Z
+DTSTART:20241228T090000Z
+DTEND:20241228T170000Z
+SUMMARY:Training Workshop
+DESCRIPTION:Advanced training session on new technologies and best practices.
+LOCATION:Training Center
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+END:VCALENDAR 

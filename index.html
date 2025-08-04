@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calendar - Subscribe to Events</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <i class="fas fa-calendar-alt"></i>
+                My Calendar
+            </h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#subscribe" class="nav-link">Subscribe</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Stay Updated with Our Events</h1>
+                    <p class="hero-subtitle">Subscribe to our calendar and never miss an important event. Get automatic updates when new events are added.</p>
+                    <div class="hero-buttons">
+                        <a href="#subscribe" class="btn btn-primary">
+                            <i class="fas fa-calendar-plus"></i>
+                            Subscribe to Calendar
+                        </a>
+                        <a href="#events" class="btn btn-secondary">
+                            <i class="fas fa-eye"></i>
+                            View Events
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="calendar-preview">
+                        <div class="calendar-header">
+                            <span class="month">December</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day event-day">
+                                <span class="day-number">15</span>
+                                <div class="event-dot"></div>
+                            </div>
+                            <div class="calendar-day">
+                                <span class="day-number">16</span>
+                            </div>
+                            <div class="calendar-day event-day">
+                                <span class="day-number">20</span>
+                                <div class="event-dot"></div>
+                            </div>
+                            <div class="calendar-day">
+                                <span class="day-number">25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="events-section">
+            <div class="container">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="events-grid" id="events-container">
+                    <!-- Events will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section id="subscribe" class="subscribe-section">
+            <div class="container">
+                <h2 class="section-title">Subscribe to Our Calendar</h2>
+                <div class="subscribe-content">
+                    <div class="subscribe-info">
+                        <h3>How to Subscribe</h3>
+                        <ol class="subscribe-steps">
+                            <li>
+                                <i class="fas fa-copy"></i>
+                                <span>Copy the iCal URL below</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-calendar"></i>
+                                <span>Open your calendar app (Google Calendar, Apple Calendar, Outlook, etc.)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-plus"></i>
+                                <span>Add the calendar using the iCal URL</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>You'll receive automatic updates when new events are added</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="ical-link-container">
+                        <h3>iCal Feed URL</h3>
+                        <div class="ical-input-group">
+                            <input type="text" id="ical-url" value="https://yourusername.github.io/mewhenbowling/calendar.ics" readonly>
+                            <button class="btn btn-copy" onclick="copyIcalUrl()">
+                                <i class="fas fa-copy"></i>
+                                Copy
+                            </button>
+                        </div>
+                        <div class="calendar-apps">
+                            <h4>Popular Calendar Apps</h4>
+                            <div class="app-buttons">
+                                <a href="#" class="app-btn" onclick="openGoogleCalendar()">
+                                    <i class="fab fa-google"></i>
+                                    Google Calendar
+                                </a>
+                                <a href="#" class="app-btn" onclick="openAppleCalendar()">
+                                    <i class="fab fa-apple"></i>
+                                    Apple Calendar
+                                </a>
+                                <a href="#" class="app-btn" onclick="openOutlook()">
+                                    <i class="fab fa-microsoft"></i>
+                                    Outlook
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 My Calendar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
