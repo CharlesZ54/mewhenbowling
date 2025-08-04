@@ -297,8 +297,8 @@ function showSuccessMessage(message) {
 function updateIcalUrl() {
     if (!icalUrlInput) return;
     
-    const currentDomain = window.location.origin;
-    const icalUrl = `${currentDomain}/calendar.ics`;
+    // Use the hardcoded GitHub Pages URL
+    const icalUrl = 'https://charlesz54.github.io/mewhenbowling/calendar.ics';
     icalUrlInput.value = icalUrl;
 }
 
