@@ -147,10 +147,14 @@ function loadEvents() {
         return;
     }
     
+    console.log('Total events loaded:', events.length);
+    console.log('Current date/time:', new Date());
+    
     // Filter out past events
     const now = new Date();
     const futureEvents = events.filter(event => {
         const eventDate = new Date(event.date + ' ' + event.start_time);
+        console.log('Event:', event.title, 'Date:', eventDate, 'Is future:', eventDate > now);
         return eventDate > now;
     });
     
