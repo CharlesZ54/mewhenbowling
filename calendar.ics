@@ -8,44 +8,110 @@ X-WR-CALDESC:Subscribe to our events calendar
 X-WR-TIMEZONE:UTC
 BEGIN:VEVENT
 UID:event-1@mewhenbowling.com
-DTSTAMP:20250804T002722Z
-DTSTART:20241215T190000Z
-DTEND:20241215T200000Z
-SUMMARY:League Night - Week 100
-DESCRIPTION:Firsts week of the Me When Bowling league season. Come ready to bowl and meet your teammates!
+DTSTAMP:20250804T010031Z
+DTSTART:20240827T210000Z
+DTEND:20240827T230000Z
+SUMMARY:MWB Season 7 - Week 1
+DESCRIPTION:Opening week of Me When Bowling Season 7. Come ready to start the new season!
 LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
 BEGIN:VEVENT
 UID:event-2@mewhenbowling.com
-DTSTAMP:20250804T002722Z
-DTSTART:20241222T190000Z
-DTEND:20241222T200000Z
-SUMMARY:League Night - Week 2
-DESCRIPTION:Second week of league play. Don't forget your bowling shoes!
+DTSTAMP:20250804T010031Z
+DTSTART:20240903T210000Z
+DTEND:20240903T230000Z
+SUMMARY:MWB Season 7 - Week 2
+DESCRIPTION:Second week of Season 7. Keep up the great bowling!
 LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
 BEGIN:VEVENT
 UID:event-3@mewhenbowling.com
-DTSTAMP:20250804T002722Z
-DTSTART:20241225T180000Z
-DTEND:20241225T190000Z
-SUMMARY:Holiday Bowling Party
-DESCRIPTION:Special holiday bowling event with prizes and refreshments. Open to all league members!
+DTSTAMP:20250804T010031Z
+DTSTART:20240917T210000Z
+DTEND:20240917T230000Z
+SUMMARY:MWB Season 7 - Week 3
+DESCRIPTION:Third week of Season 7. Don't forget your bowling shoes!
 LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
 BEGIN:VEVENT
 UID:event-4@mewhenbowling.com
-DTSTAMP:20250804T002722Z
-DTSTART:20241229T190000Z
-DTEND:20241229T200000Z
-SUMMARY:League Night - Week 3
-DESCRIPTION:Third week of league competition. Keep up the great bowling!
+DTSTAMP:20250804T010031Z
+DTSTART:20241001T210000Z
+DTEND:20241001T230000Z
+SUMMARY:MWB Season 7 - Week 4
+DESCRIPTION:Fourth week of Season 7. Halfway through the regular season!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:event-5@mewhenbowling.com
+DTSTAMP:20250804T010031Z
+DTSTART:20241015T210000Z
+DTEND:20241015T230000Z
+SUMMARY:MWB Season 7 - Week 5
+DESCRIPTION:Fifth week of Season 7. The competition is heating up!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:event-6@mewhenbowling.com
+DTSTAMP:20250804T010031Z
+DTSTART:20241029T210000Z
+DTEND:20241029T230000Z
+SUMMARY:MWB Season 7 - Week 6
+DESCRIPTION:Sixth week of Season 7. Every game counts for playoff positioning!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:event-7@mewhenbowling.com
+DTSTAMP:20250804T010031Z
+DTSTART:20241112T210000Z
+DTEND:20241112T230000Z
+SUMMARY:MWB Season 7 - Week 7
+DESCRIPTION:Seventh week of Season 7. Final push for playoff spots!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:event-8@mewhenbowling.com
+DTSTAMP:20250804T010031Z
+DTSTART:20241119T210000Z
+DTEND:20241119T230000Z
+SUMMARY:MWB Season 7 - Week 8
+DESCRIPTION:Final week of Season 7 regular season. Last chance to secure playoff position!
+LOCATION:Westbrook Lanes, Brooklawn, NJ
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:event-9@mewhenbowling.com
+DTSTAMP:20250804T010031Z
+DTSTART:20241203T210000Z
+DTEND:20241203T230000Z
+SUMMARY:MWB Season 7 - Semifinals (Tentative)
+DESCRIPTION:Tentative playoff semifinals. Top teams compete for a spot in the finals! Date subject to change.
+LOCATION:Westbrook Lanes, Brooklawn, NJ
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:event-10@mewhenbowling.com
+DTSTAMP:20250804T010031Z
+DTSTART:20241210T210000Z
+DTEND:20241210T230000Z
+SUMMARY:MWB Season 7 - Finals (Tentative)
+DESCRIPTION:Tentative Season 7 championship finals. The best of the best compete for the title! Date subject to change.
 LOCATION:Westbrook Lanes, Brooklawn, NJ
 STATUS:CONFIRMED
 SEQUENCE:0
