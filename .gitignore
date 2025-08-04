@@ -191,3 +191,6 @@ Desktop.ini
 *.bak
 *.backup
 *.old 
+
+# Auto-generated calendar file
+calendar.ics 
