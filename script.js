@@ -117,9 +117,13 @@ function parseYamlEvents(yamlText) {
             if (currentEvent) {
                 currentEvent.date = line.substring(5).trim().replace(/"/g, '');
             }
-        } else if (line.startsWith('time:')) {
+        } else if (line.startsWith('start_time:')) {
             if (currentEvent) {
-                currentEvent.time = line.substring(5).trim().replace(/"/g, '');
+                currentEvent.start_time = line.substring(11).trim().replace(/"/g, '');
+            }
+        } else if (line.startsWith('end_time:')) {
+            if (currentEvent) {
+                currentEvent.end_time = line.substring(9).trim().replace(/"/g, '');
             }
         } else if (line.startsWith('location:')) {
             if (currentEvent) {
@@ -143,10 +147,27 @@ function loadEvents() {
         return;
     }
     
-    console.log('Loading events into container:', events.length, 'events');
+    // Filter out past events
+    const now = new Date();
+    const futureEvents = events.filter(event => {
+        const eventDate = new Date(event.date + ' ' + event.start_time);
+        return eventDate > now;
+    });
+    
+    console.log('Loading events into container:', futureEvents.length, 'future events');
     eventsContainer.innerHTML = '';
     
-    events.forEach(event => {
+    if (futureEvents.length === 0) {
+        eventsContainer.innerHTML = `
+            <div class="no-events">
+                <h3>No upcoming events</h3>
+                <p>Check back soon for new events!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    futureEvents.forEach(event => {
         const eventCard = createEventCard(event);
         eventsContainer.appendChild(eventCard);
     });
@@ -158,7 +179,7 @@ function createEventCard(event) {
     card.className = 'event-card';
     
     const formattedDate = formatDate(event.date);
-    const formattedTime = formatTime(event.time);
+    const formattedTime = formatTime(event.start_time);
     
     card.innerHTML = `
         <div class="event-date">
