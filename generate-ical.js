@@ -42,10 +42,6 @@ function loadEventsFromYaml() {
                 if (currentEvent) {
                     currentEvent.title = line.substring(6).trim().replace(/"/g, '');
                 }
-            } else if (line.startsWith('description:')) {
-                if (currentEvent) {
-                    currentEvent.description = line.substring(12).trim().replace(/"/g, '');
-                }
             } else if (line.startsWith('date:')) {
                 if (currentEvent) {
                     currentEvent.date = line.substring(5).trim().replace(/"/g, '');
@@ -166,7 +162,7 @@ DTSTAMP:${formatDate(new Date())}
 DTSTART:${formatDate(startDate)}
 DTEND:${formatDate(endDate)}
 SUMMARY:${event.title}
-DESCRIPTION:${event.description}
+DESCRIPTION:${event.description || event.title}
 LOCATION:${event.location}
 STATUS:CONFIRMED
 SEQUENCE:0

@@ -109,10 +109,6 @@ function parseYamlEvents(yamlText) {
             if (currentEvent) {
                 currentEvent.title = line.substring(6).trim().replace(/"/g, '');
             }
-        } else if (line.startsWith('description:')) {
-            if (currentEvent) {
-                currentEvent.description = line.substring(12).trim().replace(/"/g, '');
-            }
         } else if (line.startsWith('date:')) {
             if (currentEvent) {
                 currentEvent.date = line.substring(5).trim().replace(/"/g, '');
@@ -200,7 +196,6 @@ function createEventCard(event) {
             ${formattedDate} at ${formattedTime}
         </div>
         <h3 class="event-title">${event.title}</h3>
-        <p class="event-description">${event.description}</p>
         <div class="event-location">
             <i class="fas fa-map-marker-alt"></i>
             ${event.location}
