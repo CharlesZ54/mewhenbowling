@@ -153,7 +153,16 @@ function loadEvents() {
     // Filter out past events
     const now = new Date();
     const futureEvents = events.filter(event => {
-        const eventDate = new Date(event.date + ' ' + event.start_time);
+        // Parse date and time properly
+        const [year, month, day] = event.date.split('-');
+        const [time, period] = event.start_time.split(' ');
+        const [hours, minutes] = time.split(':');
+        
+        let hour24 = parseInt(hours);
+        if (period === 'PM' && hour24 !== 12) hour24 += 12;
+        if (period === 'AM' && hour24 === 12) hour24 = 0;
+        
+        const eventDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day), hour24, parseInt(minutes));
         console.log('Event:', event.title, 'Date:', eventDate, 'Is future:', eventDate > now);
         return eventDate > now;
     });
