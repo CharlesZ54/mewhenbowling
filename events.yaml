@@ -2,7 +2,7 @@ events:
   - id: 1
     title: "MWB Season 7 - Week 1"
     description: "Opening week of Me When Bowling Season 7. Come ready to start the new season!"
-    date: "2024-08-27"
+    date: "2025-08-27"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -10,7 +10,7 @@ events:
   - id: 2
     title: "MWB Season 7 - Week 2"
     description: "Second week of Season 7. Keep up the great bowling!"
-    date: "2024-09-03"
+    date: "2025-09-03"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -18,7 +18,7 @@ events:
   - id: 3
     title: "MWB Season 7 - Week 3"
     description: "Third week of Season 7. Don't forget your bowling shoes!"
-    date: "2024-09-17"
+    date: "2025-09-17"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -26,7 +26,7 @@ events:
   - id: 4
     title: "MWB Season 7 - Week 4"
     description: "Fourth week of Season 7. Halfway through the regular season!"
-    date: "2024-10-01"
+    date: "2025-10-01"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -34,7 +34,7 @@ events:
   - id: 5
     title: "MWB Season 7 - Week 5"
     description: "Fifth week of Season 7. The competition is heating up!"
-    date: "2024-10-15"
+    date: "2025-10-15"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -42,7 +42,7 @@ events:
   - id: 6
     title: "MWB Season 7 - Week 6"
     description: "Sixth week of Season 7. Every game counts for playoff positioning!"
-    date: "2024-10-29"
+    date: "2025-10-29"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -50,7 +50,7 @@ events:
   - id: 7
     title: "MWB Season 7 - Week 7"
     description: "Seventh week of Season 7. Final push for playoff spots!"
-    date: "2024-11-12"
+    date: "2025-11-12"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -58,7 +58,7 @@ events:
   - id: 8
     title: "MWB Season 7 - Week 8"
     description: "Final week of Season 7 regular season. Last chance to secure playoff position!"
-    date: "2024-11-19"
+    date: "2025-11-19"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -66,7 +66,7 @@ events:
   - id: 9
     title: "MWB Season 7 - Semifinals (Tentative)"
     description: "Tentative playoff semifinals. Top teams compete for a spot in the finals! Date subject to change."
-    date: "2024-12-03"
+    date: "2025-12-03"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
@@ -74,7 +74,7 @@ events:
   - id: 10
     title: "MWB Season 7 - Finals (Tentative)"
     description: "Tentative Season 7 championship finals. The best of the best compete for the title! Date subject to change."
-    date: "2024-12-10"
+    date: "2025-12-10"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ" 
