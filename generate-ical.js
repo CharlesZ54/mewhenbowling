@@ -50,9 +50,13 @@ function loadEventsFromYaml() {
                 if (currentEvent) {
                     currentEvent.date = line.substring(5).trim().replace(/"/g, '');
                 }
-            } else if (line.startsWith('time:')) {
+            } else if (line.startsWith('start_time:')) {
                 if (currentEvent) {
-                    currentEvent.time = line.substring(5).trim().replace(/"/g, '');
+                    currentEvent.start_time = line.substring(11).trim().replace(/"/g, '');
+                }
+            } else if (line.startsWith('end_time:')) {
+                if (currentEvent) {
+                    currentEvent.end_time = line.substring(9).trim().replace(/"/g, '');
                 }
             } else if (line.startsWith('location:')) {
                 if (currentEvent) {
@@ -82,7 +86,8 @@ function loadEventsFromYaml() {
                 title: "Team Meeting",
                 description: "Weekly team sync to discuss project progress and upcoming milestones.",
                 date: "2024-12-15",
-                time: "10:00 AM",
+                start_time: "10:00 AM",
+                end_time: "11:00 AM",
                 location: "Conference Room A"
             },
             {
@@ -90,7 +95,8 @@ function loadEventsFromYaml() {
                 title: "Product Launch",
                 description: "Launch of our new product line with live demonstrations and Q&A session.",
                 date: "2024-12-20",
-                time: "2:00 PM",
+                start_time: "2:00 PM",
+                end_time: "4:00 PM",
                 location: "Main Auditorium"
             },
             {
@@ -98,7 +104,8 @@ function loadEventsFromYaml() {
                 title: "Holiday Party",
                 description: "Annual company holiday celebration with food, drinks, and entertainment.",
                 date: "2024-12-25",
-                time: "6:00 PM",
+                start_time: "6:00 PM",
+                end_time: "9:00 PM",
                 location: "Grand Ballroom"
             },
             {
@@ -106,7 +113,8 @@ function loadEventsFromYaml() {
                 title: "Training Workshop",
                 description: "Advanced training session on new technologies and best practices.",
                 date: "2024-12-28",
-                time: "9:00 AM",
+                start_time: "9:00 AM",
+                end_time: "12:00 PM",
                 location: "Training Center"
             }
         ];
@@ -124,19 +132,28 @@ X-WR-CALDESC:Subscribe to our events calendar
 X-WR-TIMEZONE:UTC\n`;
 
     events.forEach(event => {
-        // Parse date and time
+        // Parse start date and time
         const [year, month, day] = event.date.split('-');
-        const [time, period] = event.time.split(' ');
-        const [hours, minutes] = time.split(':');
+        const [startTime, startPeriod] = event.start_time.split(' ');
+        const [startHours, startMinutes] = startTime.split(':');
         
-        // Convert to 24-hour format
-        let hour24 = parseInt(hours);
-        if (period === 'PM' && hour24 !== 12) hour24 += 12;
-        if (period === 'AM' && hour24 === 12) hour24 = 0;
+        // Parse end date and time
+        const [endTime, endPeriod] = event.end_time.split(' ');
+        const [endHours, endMinutes] = endTime.split(':');
         
-        // Create start date
-        const startDate = new Date(year, month - 1, day, hour24, parseInt(minutes));
-        const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour duration
+        // Convert to 24-hour format for start time
+        let startHour24 = parseInt(startHours);
+        if (startPeriod === 'PM' && startHour24 !== 12) startHour24 += 12;
+        if (startPeriod === 'AM' && startHour24 === 12) startHour24 = 0;
+        
+        // Convert to 24-hour format for end time
+        let endHour24 = parseInt(endHours);
+        if (endPeriod === 'PM' && endHour24 !== 12) endHour24 += 12;
+        if (endPeriod === 'AM' && endHour24 === 12) endHour24 = 0;
+        
+        // Create start and end dates
+        const startDate = new Date(year, month - 1, day, startHour24, parseInt(startMinutes));
+        const endDate = new Date(year, month - 1, day, endHour24, parseInt(endMinutes));
         
         // Format dates for iCal
         const formatDate = (date) => {
@@ -167,7 +184,7 @@ function main() {
         
         console.log(`📅 Found ${events.length} events`);
         events.forEach(event => {
-            console.log(`  • ${event.title} - ${event.date} at ${event.time}`);
+            console.log(`  • ${event.title} - ${event.date} at ${event.start_time}`);
         });
         
         const icalContent = generateIcalFile(events);
