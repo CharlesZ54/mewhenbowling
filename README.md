@@ -1,6 +1,6 @@
 # My Calendar Website
 
-A modern, responsive website that hosts a calendar with an iCal feed that people can subscribe to. Built for hosting on GitHub Pages.
+A modern, responsive website that hosts a calendar with an iCal feed that people can subscribe to. Built for hosting on GitHub Pages with automatic iCal generation via GitHub Actions.
 
 ## Features
 
@@ -10,44 +10,47 @@ A modern, responsive website that hosts a calendar with an iCal feed that people
 - 📅 **Event Display**: View upcoming events on the website
 - 🔗 **Easy Integration**: One-click buttons for popular calendar apps
 - 📋 **Copy to Clipboard**: Easy iCal URL copying functionality
+- 🤖 **Auto-Generation**: GitHub Actions automatically generates iCal file from YAML events
 
 ## Quick Start
 
 ### 1. Clone or Download
 
 ```bash
-git clone https://github.com/yourusername/mewhenbowling.git
+git clone https://github.com/CharlesZ54/mewhenbowling.git
 cd mewhenbowling
 ```
 
 ### 2. Customize Your Calendar
 
-#### Update Events in `script.js`
-Edit the `events` array in `script.js` to add your own events:
+#### Update Events in `events.yaml`
+Edit the `events.yaml` file to add your own events:
 
-```javascript
-const events = [
-    {
-        id: 1,
-        title: "Your Event Title",
-        description: "Event description here",
-        date: "2024-12-15",
-        time: "10:00 AM",
-        location: "Event Location"
-    },
-    // Add more events...
-];
+```yaml
+events:
+  - id: 1
+    title: "Your Event Title"
+    description: "Event description here"
+    date: "2024-12-15"
+    time: "10:00 AM"
+    location: "Event Location"
+    
+  - id: 2
+    title: "Another Event"
+    description: "Another event description"
+    date: "2024-12-20"
+    time: "2:00 PM"
+    location: "Another Location"
 ```
 
-#### Update iCal Feed in `calendar.ics`
-Edit the `calendar.ics` file to match your events. Each event should have:
-
-- `UID`: Unique identifier (e.g., `event-1@yourdomain.com`)
-- `DTSTART`: Start date/time in UTC format
-- `DTEND`: End date/time in UTC format
-- `SUMMARY`: Event title
-- `DESCRIPTION`: Event description
-- `LOCATION`: Event location
+#### Event Format
+Each event should have:
+- `id`: Unique identifier (number)
+- `title`: Event title
+- `description`: Event description
+- `date`: Date in YYYY-MM-DD format
+- `time`: Time in 12-hour format (e.g., "10:00 AM")
+- `location`: Event location
 
 ### 3. Customize Website
 
@@ -100,57 +103,44 @@ Your website will be available at: `https://yourusername.github.io/mewhenbowling
 
 ## How to Update Events
 
-### Method 1: Manual Updates
-1. Edit the `events` array in `script.js`
-2. Update the corresponding events in `calendar.ics`
-3. Commit and push changes to GitHub
+### Method 1: Manual Updates (Recommended)
+1. Edit the `events.yaml` file with your new events
+2. Commit and push changes to GitHub
+3. GitHub Actions will automatically generate the new `calendar.ics` file
+4. The iCal feed will be updated automatically
 
-### Method 2: Automated Updates (Advanced)
-You can create a script to automatically generate the iCal file from a database or external source:
-
-```javascript
-// Example: Generate iCal from events array
-function generateIcalFile(events) {
-    let ical = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//My Calendar//Calendar Website//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-X-WR-CALNAME:My Calendar
-X-WR-CALDESC:Subscribe to our events calendar
-X-WR-TIMEZONE:UTC\n`;
-
-    events.forEach(event => {
-        const startDate = new Date(event.date + ' ' + event.time);
-        const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour duration
-        
-        ical += `BEGIN:VEVENT
-UID:event-${event.id}@yourdomain.com
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-DTSTART:${startDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-DTEND:${endDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-SUMMARY:${event.title}
-DESCRIPTION:${event.description}
-LOCATION:${event.location}
-STATUS:CONFIRMED
-SEQUENCE:0
-END:VEVENT\n`;
-    });
-
-    ical += 'END:VCALENDAR';
-    return ical;
-}
+### Method 2: Local Generation
+If you want to test locally:
+```bash
+# Install Node.js if you haven't already
+# Then run:
+node generate-ical.js
 ```
+
+## GitHub Actions Workflow
+
+The repository includes a GitHub Actions workflow (`.github/workflows/generate-ical.yml`) that:
+
+1. **Triggers** when `events.yaml` is modified
+2. **Generates** a new `calendar.ics` file from the YAML events
+3. **Commits** the updated iCal file back to the repository
+4. **Updates** the iCal feed automatically
+
+This ensures your calendar feed is always in sync with your events!
 
 ## File Structure
 
 ```
 mewhenbowling/
-├── index.html          # Main website page
-├── styles.css          # CSS styling
-├── script.js           # JavaScript functionality
-├── calendar.ics        # iCal feed file
-└── README.md          # This file
+├── index.html                    # Main website page
+├── styles.css                    # CSS styling
+├── script.js                     # JavaScript functionality
+├── events.yaml                   # Event definitions (YAML format)
+├── calendar.ics                  # iCal feed file (auto-generated)
+├── generate-ical.js              # Script to generate iCal from YAML
+├── .github/workflows/            # GitHub Actions workflows
+│   └── generate-ical.yml        # Auto-generation workflow
+└── README.md                     # This file
 ```
 
 ## Customization Options
@@ -193,11 +183,18 @@ The website uses CSS Grid and Flexbox for responsive layouts. Key breakpoints:
 1. Ensure the `calendar.ics` file is in the root directory
 2. Check that the file has the correct MIME type (text/calendar)
 3. Verify the URL is accessible via direct link
+4. Check GitHub Actions logs for generation errors
 
 ### Events Not Displaying
 1. Check the browser console for JavaScript errors
-2. Verify the `events` array in `script.js` is properly formatted
+2. Verify the `events.yaml` file is properly formatted
 3. Ensure all required fields are present (id, title, description, date, time, location)
+
+### GitHub Actions Not Working
+1. Check the Actions tab in your repository
+2. Ensure the workflow file is in `.github/workflows/`
+3. Verify the YAML syntax is correct
+4. Check that Node.js is available in the workflow
 
 ### GitHub Pages Not Updating
 1. Wait 5-10 minutes for changes to propagate

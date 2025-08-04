@@ -1,0 +1,44 @@
+name: Generate iCal File
+
+on:
+  push:
+    paths:
+      - 'events.yaml'
+    branches:
+      - main
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  generate-ical:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Generate iCal file
+      run: |
+        node generate-ical.js
+        
+    - name: Check if calendar.ics was modified
+      id: check-changes
+      run: |
+        if git diff --quiet calendar.ics; then
+          echo "no-changes=true" >> $GITHUB_OUTPUT
+        else
+          echo "no-changes=false" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit and push changes
+      if: steps.check-changes.outputs.no-changes == 'false'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add calendar.ics
+        git commit -m "Auto-generate calendar.ics from events.yaml changes" || exit 0
+        git push 

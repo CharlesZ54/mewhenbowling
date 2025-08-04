@@ -1,48 +1,117 @@
 #!/usr/bin/env node
 
 /**
- * Script to generate calendar.ics from events in script.js
+ * Script to generate calendar.ics from events in events.yaml
  * Usage: node generate-ical.js
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Sample events (you can modify this or load from script.js)
-const events = [
-    {
-        id: 1,
-        title: "Team Meeting",
-        description: "Weekly team sync to discuss project progress and upcoming milestones.",
-        date: "2024-12-15",
-        time: "10:00 AM",
-        location: "Conference Room A"
-    },
-    {
-        id: 2,
-        title: "Product Launch",
-        description: "Launch of our new product line with live demonstrations and Q&A session.",
-        date: "2024-12-20",
-        time: "2:00 PM",
-        location: "Main Auditorium"
-    },
-    {
-        id: 3,
-        title: "Holiday Party",
-        description: "Annual company holiday celebration with food, drinks, and entertainment.",
-        date: "2024-12-25",
-        time: "6:00 PM",
-        location: "Grand Ballroom"
-    },
-    {
-        id: 4,
-        title: "Training Workshop",
-        description: "Advanced training session on new technologies and best practices.",
-        date: "2024-12-28",
-        time: "9:00 AM",
-        location: "Training Center"
+function loadEventsFromYaml() {
+    try {
+        const yamlPath = path.join(__dirname, 'events.yaml');
+        const yamlContent = fs.readFileSync(yamlPath, 'utf8');
+        
+        // Simple YAML parser for our specific format
+        const events = [];
+        const lines = yamlContent.split('\n');
+        let currentEvent = null;
+        let inEventsBlock = false;
+        
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            
+            if (line === 'events:') {
+                inEventsBlock = true;
+                continue;
+            }
+            
+            if (!inEventsBlock) continue;
+            
+            if (line.startsWith('- id:')) {
+                if (currentEvent) {
+                    events.push(currentEvent);
+                }
+                currentEvent = {};
+                const idMatch = line.match(/id: (\d+)/);
+                if (idMatch) {
+                    currentEvent.id = parseInt(idMatch[1]);
+                }
+            } else if (line.startsWith('title:')) {
+                if (currentEvent) {
+                    currentEvent.title = line.substring(6).trim().replace(/"/g, '');
+                }
+            } else if (line.startsWith('description:')) {
+                if (currentEvent) {
+                    currentEvent.description = line.substring(12).trim().replace(/"/g, '');
+                }
+            } else if (line.startsWith('date:')) {
+                if (currentEvent) {
+                    currentEvent.date = line.substring(5).trim().replace(/"/g, '');
+                }
+            } else if (line.startsWith('time:')) {
+                if (currentEvent) {
+                    currentEvent.time = line.substring(5).trim().replace(/"/g, '');
+                }
+            } else if (line.startsWith('location:')) {
+                if (currentEvent) {
+                    currentEvent.location = line.substring(9).trim().replace(/"/g, '');
+                }
+            }
+        }
+        
+        // Add the last event
+        if (currentEvent) {
+            events.push(currentEvent);
+        }
+        
+        if (events.length === 0) {
+            throw new Error('No events found in events.yaml');
+        }
+        
+        return events;
+    } catch (error) {
+        console.error('Error loading events from events.yaml:', error.message);
+        console.log('Falling back to sample events...');
+        
+        // Fallback to sample events
+        return [
+            {
+                id: 1,
+                title: "Team Meeting",
+                description: "Weekly team sync to discuss project progress and upcoming milestones.",
+                date: "2024-12-15",
+                time: "10:00 AM",
+                location: "Conference Room A"
+            },
+            {
+                id: 2,
+                title: "Product Launch",
+                description: "Launch of our new product line with live demonstrations and Q&A session.",
+                date: "2024-12-20",
+                time: "2:00 PM",
+                location: "Main Auditorium"
+            },
+            {
+                id: 3,
+                title: "Holiday Party",
+                description: "Annual company holiday celebration with food, drinks, and entertainment.",
+                date: "2024-12-25",
+                time: "6:00 PM",
+                location: "Grand Ballroom"
+            },
+            {
+                id: 4,
+                title: "Training Workshop",
+                description: "Advanced training session on new technologies and best practices.",
+                date: "2024-12-28",
+                time: "9:00 AM",
+                location: "Training Center"
+            }
+        ];
     }
-];
+}
 
 function generateIcalFile(events) {
     let ical = `BEGIN:VCALENDAR
@@ -93,19 +162,20 @@ END:VEVENT\n`;
 
 function main() {
     try {
+        console.log('📖 Loading events from events.yaml...');
+        const events = loadEventsFromYaml();
+        
+        console.log(`📅 Found ${events.length} events`);
+        events.forEach(event => {
+            console.log(`  • ${event.title} - ${event.date} at ${event.time}`);
+        });
+        
         const icalContent = generateIcalFile(events);
         const outputPath = path.join(__dirname, 'calendar.ics');
         
         fs.writeFileSync(outputPath, icalContent);
-        console.log('✅ calendar.ics generated successfully!');
+        console.log('\n✅ calendar.ics generated successfully!');
         console.log(`📁 File saved to: ${outputPath}`);
-        console.log(`📅 Generated ${events.length} events`);
-        
-        // Display events
-        console.log('\n📋 Events included:');
-        events.forEach(event => {
-            console.log(`  • ${event.title} - ${event.date} at ${event.time}`);
-        });
         
     } catch (error) {
         console.error('❌ Error generating calendar.ics:', error.message);
@@ -118,4 +188,4 @@ if (require.main === module) {
     main();
 }
 
-module.exports = { generateIcalFile, events }; 
+module.exports = { generateIcalFile, loadEventsFromYaml }; 

@@ -1,4 +1,5 @@
-// Sample events data - you can modify this or load from an external source
+// Events will be loaded from events.yaml by the server or build process
+// For now, we'll use a fallback array that matches the YAML structure
 const events = [
     {
         id: 1,

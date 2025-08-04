@@ -1,0 +1,28 @@
+events:
+  - id: 1
+    title: "Team Meeting"
+    description: "Weekly team sync to discuss project progress and upcoming milestones."
+    date: "2024-12-15"
+    time: "10:00 AM"
+    location: "Conference Room A"
+    
+  - id: 2
+    title: "Product Launch"
+    description: "Launch of our new product line with live demonstrations and Q&A session."
+    date: "2024-12-20"
+    time: "2:00 PM"
+    location: "Main Auditorium"
+    
+  - id: 3
+    title: "Holiday Party"
+    description: "Annual company holiday celebration with food, drinks, and entertainment."
+    date: "2024-12-25"
+    time: "6:00 PM"
+    location: "Grand Ballroom"
+    
+  - id: 4
+    title: "Training Workshop"
+    description: "Advanced training session on new technologies and best practices."
+    date: "2024-12-28"
+    time: "9:00 AM"
+    location: "Training Center" 
