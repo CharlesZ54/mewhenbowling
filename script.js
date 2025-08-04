@@ -1,39 +1,5 @@
-// Events will be loaded from events.yaml by the server or build process
-// For now, we'll use a fallback array that matches the YAML structure
-const events = [
-    {
-        id: 1,
-        title: "Team Meeting",
-        description: "Weekly team sync to discuss project progress and upcoming milestones.",
-        date: "2024-12-15",
-        time: "10:00 AM",
-        location: "Conference Room A"
-    },
-    {
-        id: 2,
-        title: "Product Launch",
-        description: "Launch of our new product line with live demonstrations and Q&A session.",
-        date: "2024-12-20",
-        time: "2:00 PM",
-        location: "Main Auditorium"
-    },
-    {
-        id: 3,
-        title: "Holiday Party",
-        description: "Annual company holiday celebration with food, drinks, and entertainment.",
-        date: "2024-12-25",
-        time: "6:00 PM",
-        location: "Grand Ballroom"
-    },
-    {
-        id: 4,
-        title: "Training Workshop",
-        description: "Advanced training session on new technologies and best practices.",
-        date: "2024-12-28",
-        time: "9:00 AM",
-        location: "Training Center"
-    }
-];
+// Events will be loaded dynamically from events.yaml
+let events = [];
 
 // DOM elements
 const eventsContainer = document.getElementById('events-container');
@@ -42,15 +8,142 @@ const icalUrlInput = document.getElementById('ical-url');
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
-    loadEvents();
+    loadEventsFromYaml();
     setupNavigation();
     updateIcalUrl();
 });
 
+// Load events from events.yaml file
+async function loadEventsFromYaml() {
+    try {
+        console.log('Attempting to load events.yaml...');
+        const response = await fetch('events.yaml');
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+            throw new Error(`Failed to load events.yaml: ${response.status} ${response.statusText}`);
+        }
+        
+        const yamlText = await response.text();
+        console.log('YAML content loaded:', yamlText.substring(0, 200) + '...');
+        
+        events = parseYamlEvents(yamlText);
+        console.log('Parsed events:', events);
+        
+        loadEvents();
+    } catch (error) {
+        console.error('Error loading events from YAML:', error);
+        console.log('Falling back to embedded events...');
+        
+        // Fallback to embedded events if YAML loading fails
+        if (window.embeddedEvents) {
+            events = window.embeddedEvents;
+        } else {
+            // Final fallback to sample events
+            events = [
+                {
+                    id: 1,
+                    title: "Lorem Ipsum Event",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    date: "2024-12-15",
+                    time: "7:00 PM",
+                    location: "Lorem Ipsum Location"
+                },
+                {
+                    id: 2,
+                    title: "Another Lorem Event",
+                    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                    date: "2024-12-22",
+                    time: "7:00 PM",
+                    location: "Lorem Ipsum Venue"
+                },
+                {
+                    id: 3,
+                    title: "Lorem Ipsum Party",
+                    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                    date: "2024-12-25",
+                    time: "6:00 PM",
+                    location: "Lorem Ipsum Hall"
+                },
+                {
+                    id: 4,
+                    title: "Lorem Ipsum Workshop",
+                    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    date: "2024-12-29",
+                    time: "7:00 PM",
+                    location: "Lorem Ipsum Center"
+                }
+            ];
+        }
+        loadEvents();
+    }
+}
+
+// Parse YAML events (simple parser for our specific format)
+function parseYamlEvents(yamlText) {
+    const events = [];
+    const lines = yamlText.split('\n');
+    let currentEvent = null;
+    let inEventsBlock = false;
+    
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        
+        if (line === 'events:') {
+            inEventsBlock = true;
+            continue;
+        }
+        
+        if (!inEventsBlock) continue;
+        
+        if (line.startsWith('- id:')) {
+            if (currentEvent) {
+                events.push(currentEvent);
+            }
+            currentEvent = {};
+            const idMatch = line.match(/id: (\d+)/);
+            if (idMatch) {
+                currentEvent.id = parseInt(idMatch[1]);
+            }
+        } else if (line.startsWith('title:')) {
+            if (currentEvent) {
+                currentEvent.title = line.substring(6).trim().replace(/"/g, '');
+            }
+        } else if (line.startsWith('description:')) {
+            if (currentEvent) {
+                currentEvent.description = line.substring(12).trim().replace(/"/g, '');
+            }
+        } else if (line.startsWith('date:')) {
+            if (currentEvent) {
+                currentEvent.date = line.substring(5).trim().replace(/"/g, '');
+            }
+        } else if (line.startsWith('time:')) {
+            if (currentEvent) {
+                currentEvent.time = line.substring(5).trim().replace(/"/g, '');
+            }
+        } else if (line.startsWith('location:')) {
+            if (currentEvent) {
+                currentEvent.location = line.substring(9).trim().replace(/"/g, '');
+            }
+        }
+    }
+    
+    // Add the last event
+    if (currentEvent) {
+        events.push(currentEvent);
+    }
+    
+    return events;
+}
+
 // Load and display events
 function loadEvents() {
-    if (!eventsContainer) return;
+    if (!eventsContainer) {
+        console.error('Events container not found!');
+        return;
+    }
     
+    console.log('Loading events into container:', events.length, 'events');
     eventsContainer.innerHTML = '';
     
     events.forEach(event => {

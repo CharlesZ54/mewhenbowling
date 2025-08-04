@@ -1,13 +1,13 @@
-# My Calendar Website
+# Me When Bowling League Calendar
 
-A modern, responsive website that hosts a calendar with an iCal feed that people can subscribe to. Built for hosting on GitHub Pages with automatic iCal generation via GitHub Actions.
+A modern, responsive website that hosts a calendar with an iCal feed for the Me When Bowling league at Westbrook Lanes in Brooklawn, NJ. Built for hosting on GitHub Pages with automatic iCal generation via GitHub Actions.
 
 ## Features
 
-- 🗓️ **iCal Feed**: Subscribe to calendar events via iCal URL
+- 🗓️ **iCal Feed**: Subscribe to bowling league events via iCal URL
 - 📱 **Responsive Design**: Works perfectly on desktop, tablet, and mobile
 - 🎨 **Modern UI**: Beautiful gradient design with smooth animations
-- 📅 **Event Display**: View upcoming events on the website
+- 🎳 **League Events**: View upcoming bowling league events
 - 🔗 **Easy Integration**: One-click buttons for popular calendar apps
 - 📋 **Copy to Clipboard**: Easy iCal URL copying functionality
 - 🤖 **Auto-Generation**: GitHub Actions automatically generates iCal file from YAML events
@@ -24,23 +24,23 @@ cd mewhenbowling
 ### 2. Customize Your Calendar
 
 #### Update Events in `events.yaml`
-Edit the `events.yaml` file to add your own events:
+Edit the `events.yaml` file to add your own bowling league events:
 
 ```yaml
 events:
   - id: 1
-    title: "Your Event Title"
-    description: "Event description here"
+    title: "League Night - Week 1"
+    description: "First week of the Me When Bowling league season"
     date: "2024-12-15"
-    time: "10:00 AM"
-    location: "Event Location"
+    time: "7:00 PM"
+    location: "Westbrook Lanes, Brooklawn, NJ"
     
   - id: 2
-    title: "Another Event"
-    description: "Another event description"
+    title: "Tournament Night"
+    description: "Special tournament event with prizes"
     date: "2024-12-20"
-    time: "2:00 PM"
-    location: "Another Location"
+    time: "6:00 PM"
+    location: "Westbrook Lanes, Brooklawn, NJ"
 ```
 
 #### Event Format
@@ -49,7 +49,7 @@ Each event should have:
 - `title`: Event title
 - `description`: Event description
 - `date`: Date in YYYY-MM-DD format
-- `time`: Time in 12-hour format (e.g., "10:00 AM")
+- `time`: Time in 12-hour format (e.g., "7:00 PM")
 - `location`: Event location
 
 ### 3. Customize Website
@@ -104,7 +104,7 @@ Your website will be available at: `https://yourusername.github.io/mewhenbowling
 ## How to Update Events
 
 ### Method 1: Manual Updates (Recommended)
-1. Edit the `events.yaml` file with your new events
+1. Edit the `events.yaml` file with your new bowling league events
 2. Commit and push changes to GitHub
 3. GitHub Actions will automatically generate the new `calendar.ics` file
 4. The iCal feed will be updated automatically
@@ -126,7 +126,7 @@ The repository includes a GitHub Actions workflow (`.github/workflows/generate-i
 3. **Commits** the updated iCal file back to the repository
 4. **Updates** the iCal feed automatically
 
-This ensures your calendar feed is always in sync with your events!
+This ensures your bowling league calendar feed is always in sync with your events!
 
 ## File Structure
 
@@ -135,7 +135,7 @@ mewhenbowling/
 ├── index.html                    # Main website page
 ├── styles.css                    # CSS styling
 ├── script.js                     # JavaScript functionality
-├── events.yaml                   # Event definitions (YAML format)
+├── events.yaml                   # Bowling league event definitions (YAML format)
 ├── calendar.ics                  # iCal feed file (auto-generated)
 ├── generate-ical.js              # Script to generate iCal from YAML
 ├── .github/workflows/            # GitHub Actions workflows
@@ -221,4 +221,4 @@ If you need help or have questions:
 
 ---
 
-**Happy calendaring! 📅✨** 
+**Happy bowling! 🎳✨** 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Calendar - Subscribe to Events</title>
+    <title>Me When Bowling - League Calendar</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,8 +12,8 @@
     <header class="header">
         <div class="container">
             <h1 class="logo">
-                <i class="fas fa-calendar-alt"></i>
-                My Calendar
+                <i class="fas fa-bowling-ball"></i>
+                Me When Bowling
             </h1>
             <nav class="nav">
                 <a href="#home" class="nav-link active">Home</a>
@@ -27,8 +27,8 @@
         <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Stay Updated with Our Events</h1>
-                    <p class="hero-subtitle">Subscribe to our calendar and never miss an important event. Get automatic updates when new events are added.</p>
+                    <h1 class="hero-title">Me When Bowling League</h1>
+                    <p class="hero-subtitle">Stay updated with our bowling league events at Westbrook Lanes in Brooklawn, NJ. Subscribe to our calendar and never miss a game night!</p>
                     <div class="hero-buttons">
                         <a href="#subscribe" class="btn btn-primary">
                             <i class="fas fa-calendar-plus"></i>
@@ -69,7 +69,7 @@
 
         <section id="events" class="events-section">
             <div class="container">
-                <h2 class="section-title">Upcoming Events</h2>
+                <h2 class="section-title">Upcoming League Events</h2>
                 <div class="events-grid" id="events-container">
                     <!-- Events will be loaded dynamically -->
                 </div>
@@ -78,7 +78,7 @@
 
         <section id="subscribe" class="subscribe-section">
             <div class="container">
-                <h2 class="section-title">Subscribe to Our Calendar</h2>
+                <h2 class="section-title">Subscribe to Our League Calendar</h2>
                 <div class="subscribe-content">
                     <div class="subscribe-info">
                         <h3>How to Subscribe</h3>
@@ -104,7 +104,7 @@
                     <div class="ical-link-container">
                         <h3>iCal Feed URL</h3>
                         <div class="ical-input-group">
-                            <input type="text" id="ical-url" value="https://yourusername.github.io/mewhenbowling/calendar.ics" readonly>
+                            <input type="text" id="ical-url" value="https://charlesz54.github.io/mewhenbowling/calendar.ics" readonly>
                             <button class="btn btn-copy" onclick="copyIcalUrl()">
                                 <i class="fas fa-copy"></i>
                                 Copy
@@ -135,7 +135,6 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 My Calendar. All rights reserved.</p>
         </div>
     </footer>
 

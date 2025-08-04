@@ -1,28 +1,28 @@
 events:
   - id: 1
-    title: "Team Meeting"
-    description: "Weekly team sync to discuss project progress and upcoming milestones."
+    title: "League Night - Week 100"
+    description: "Firsts week of the Me When Bowling league season. Come ready to bowl and meet your teammates!"
     date: "2024-12-15"
-    time: "10:00 AM"
-    location: "Conference Room A"
+    time: "7:00 PM"
+    location: "Westbrook Lanes, Brooklawn, NJ"
     
   - id: 2
-    title: "Product Launch"
-    description: "Launch of our new product line with live demonstrations and Q&A session."
-    date: "2024-12-20"
-    time: "2:00 PM"
-    location: "Main Auditorium"
+    title: "League Night - Week 2"
+    description: "Second week of league play. Don't forget your bowling shoes!"
+    date: "2024-12-22"
+    time: "7:00 PM"
+    location: "Westbrook Lanes, Brooklawn, NJ"
     
   - id: 3
-    title: "Holiday Party"
-    description: "Annual company holiday celebration with food, drinks, and entertainment."
+    title: "Holiday Bowling Party"
+    description: "Special holiday bowling event with prizes and refreshments. Open to all league members!"
     date: "2024-12-25"
     time: "6:00 PM"
-    location: "Grand Ballroom"
+    location: "Westbrook Lanes, Brooklawn, NJ"
     
   - id: 4
-    title: "Training Workshop"
-    description: "Advanced training session on new technologies and best practices."
-    date: "2024-12-28"
-    time: "9:00 AM"
-    location: "Training Center" 
+    title: "League Night - Week 3"
+    description: "Third week of league competition. Keep up the great bowling!"
+    date: "2024-12-29"
+    time: "7:00 PM"
+    location: "Westbrook Lanes, Brooklawn, NJ" 
