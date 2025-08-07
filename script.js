@@ -207,7 +207,9 @@ function createEventCard(event) {
 
 // Format date for display
 function formatDate(dateString) {
-    const date = new Date(dateString);
+    // Parse the date string and create a local date to avoid timezone issues
+    const [year, month, day] = dateString.split('-');
+    const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
     const options = { 
         weekday: 'long', 
         year: 'numeric', 
