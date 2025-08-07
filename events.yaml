@@ -49,21 +49,21 @@ events:
     location: "Westbrook Lanes, Brooklawn, NJ"
     
   - id: 8
-    title: "MWB Season 7 - Week 8"
+    title: "MWB Season 7 - Quarterfinals"
     date: "2025-11-19"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
     
   - id: 9
-    title: "MWB Season 7 - Semifinals (Tentative)"
+    title: "MWB Season 7 - Semifinals"
     date: "2025-12-03"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
     location: "Westbrook Lanes, Brooklawn, NJ"
     
   - id: 10
-    title: "MWB Season 7 - Finals (Tentative)"
+    title: "MWB Season 7 - Finals"
     date: "2025-12-10"
     start_time: "9:00 PM"
     end_time: "11:00 PM"
