@@ -444,6 +444,12 @@ body {
     .app-buttons {
         flex-direction: column;
     }
+    
+    /* Stack visible events vertically on mobile */
+    .visible-events {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -518,4 +524,68 @@ body {
 
 .dismiss-btn:hover {
     background-color: rgba(21, 87, 36, 0.1);
+}
+
+/* Toggle Events Button */
+.toggle-events-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.toggle-events-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.toggle-events-btn i {
+    transition: transform 0.3s ease;
+}
+
+.toggle-events-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* Events Wrapper */
+.events-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Visible Events - Horizontal Layout */
+.visible-events {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Hidden Events Container */
+.hidden-events {
+    margin-top: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 } 

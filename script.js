@@ -176,10 +176,69 @@ function loadEvents() {
         return;
     }
     
-    futureEvents.forEach(event => {
+    // Show first 3 events initially
+    const initialEvents = futureEvents.slice(0, 3);
+    const remainingEvents = futureEvents.slice(3);
+    
+    // Create wrapper for all events and controls
+    const eventsWrapper = document.createElement('div');
+    eventsWrapper.className = 'events-wrapper';
+    
+    // Create container for visible events
+    const visibleEventsContainer = document.createElement('div');
+    visibleEventsContainer.className = 'visible-events events-grid';
+    
+    // Add initial events
+    initialEvents.forEach(event => {
         const eventCard = createEventCard(event);
-        eventsContainer.appendChild(eventCard);
+        visibleEventsContainer.appendChild(eventCard);
     });
+    
+    eventsWrapper.appendChild(visibleEventsContainer);
+    
+    // Add hidden events container if there are more events
+    if (remainingEvents.length > 0) {
+        const hiddenEventsContainer = document.createElement('div');
+        hiddenEventsContainer.className = 'hidden-events events-grid';
+        hiddenEventsContainer.style.display = 'none';
+        
+        remainingEvents.forEach(event => {
+            const eventCard = createEventCard(event);
+            hiddenEventsContainer.appendChild(eventCard);
+        });
+        
+        eventsWrapper.appendChild(hiddenEventsContainer);
+        
+        // Add toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'toggle-events-btn';
+        toggleButton.innerHTML = `
+            <i class="fas fa-chevron-down"></i>
+            Show ${remainingEvents.length} More Events
+        `;
+        toggleButton.onclick = function() {
+            const hiddenContainer = document.querySelector('.hidden-events');
+            const isHidden = hiddenContainer.style.display === 'none';
+            
+            if (isHidden) {
+                hiddenContainer.style.display = 'grid';
+                this.innerHTML = `
+                    <i class="fas fa-chevron-up"></i>
+                    Show Less
+                `;
+            } else {
+                hiddenContainer.style.display = 'none';
+                this.innerHTML = `
+                    <i class="fas fa-chevron-down"></i>
+                    Show ${remainingEvents.length} More Events
+                `;
+            }
+        };
+        
+        eventsWrapper.appendChild(toggleButton);
+    }
+    
+    eventsContainer.appendChild(eventsWrapper);
 }
 
 // Create an event card element
